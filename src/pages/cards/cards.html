@@ -10,7 +10,12 @@
   <ion-navbar>
     <ion-title>Cards</ion-title>
   </ion-navbar>
-
+<ion-content padding>
+  <ion-item>
+    <ion-label color="primary" stacked>Search for Pokemon</ion-label>
+    <ion-input type="text" (input)="SearchForMovie($event, searchkey)"></ion-input>
+  </ion-item>
+</ion-content>
 </ion-header>
 
 

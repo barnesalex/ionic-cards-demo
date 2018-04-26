@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http } from '@angular/http';
+//import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
+import { PokeServiceProvider } from '../../providers/poke-service/poke-service';
+//import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the CardsPage page.
@@ -22,26 +23,23 @@ export class CardsPage {
   name;
   image;
   type;
+  pokemon: Observable<any>;
 
-  // pokemon: Observable<any>;
-  // constructor(public navCtrl: NavController, public navParams: NavParams, public HttpClient: HttpClient) {
-  //   var rand = Math.floor(Math.random()*950);
-  //   this.pokemon = this.HttpClient.get('http://pokeapi.co/api/v2/pokemon/1');
-  //   this.pokemon.subscribe(data => {console.log('data', data)})
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pokeService: PokeServiceProvider) {
+    this.getPokemonSearch();
+  }
+
+  getPokemonSearch(){
+    this.pokeService.getPokemonByName("mew").subscribe(data => this.pokemon);
+  }
+
+  // getResults() {
+  //   return [
+  //     {"name":"Butterfree", "image":"assets/imgs/butterfree.png","type":"Flying-Type"},
+  //     {"name":"Charmander", "image":"assets/imgs/charmander.png","type":"Fire-Type"},
+  //     {"name":"Pikachu", "image":"assets/imgs/pikachu.png","type":"Electric-Type"}      
+  //   ];
   // }
-
-  constructor(public navCtrl: NavController, public navParams: NavParams){
-    this.navCtrl = navCtrl;
-    this.results = this.getResults();
-  }
-
-  getResults() {
-    return [
-      {"name":"Butterfree", "image":"assets/imgs/butterfree.png","type":"Flying-Type"},
-      {"name":"Charmander", "image":"assets/imgs/charmander.png","type":"Fire-Type"},
-      {"name":"Pikachu", "image":"assets/imgs/pikachu.png","type":"Electric-Type"}      
-    ];
-  }
 
   // getPokemonCards(){
   //    var rand = Math.floor(Math.random()*950);
