@@ -1,28 +1,25 @@
 page-cards {
+  .card-background-page {
+    ion-card {
+      position: relative;
+      text-align: center;
+    }
 
-        .card-background-page {
+    .card-title {
+      position: absolute;
+      top: 80%;
+      font-size: 4.0em;
+      width: 100%;
+      font-weight: bold;
+      color: #000;
+    }
 
-        ion-card {
-          position: relative;
-          text-align: center;
-        }
-      
-        .card-title {
-          position: absolute;
-          top: 36%;
-          font-size: 4.0em;
-          width: 100%;
-          font-weight: bold;
-          color: #FFF;
-        }
-      
-        .card-subtitle {
-          font-size: 2.0em;
-          position: absolute;
-          top: 52%;
-          width: 100%;
-          color: #FFF;
-        }
-      
-      }
+    .card-subtitle {
+      font-size: 1.0em;
+      position: absolute;
+      top: 52%;
+      width: 100%;
+      color: #fff;
+    }
+  }
 }

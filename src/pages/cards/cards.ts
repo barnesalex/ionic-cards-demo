@@ -18,26 +18,35 @@ import { PokeServiceProvider } from '../../providers/poke-service/poke-service';
   templateUrl: 'cards.html',
 })
 export class CardsPage {
-  
+
   results = new Array();
   name;
   image;
   type;
   pokemon: Observable<any>;
+  pokemonList = new Array();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private pokeService: PokeServiceProvider) {
     this.getPokemonSearch();
   }
 
   getPokemonSearch(){
-    this.pokeService.getPokemonByName("mew").subscribe(data => this.pokemon);
+    this.pokeService.getPokemonByName("mew").subscribe(data => {
+        this.name = data.name;
+        this.image = data.sprites.front_default;
+        this.type = data.type;
+
+        console.log("Name: " + this.name);
+        console.log("Image: " + this.image);
+        console.log("type: " + this.type);
+    });
   }
 
   // getResults() {
   //   return [
   //     {"name":"Butterfree", "image":"assets/imgs/butterfree.png","type":"Flying-Type"},
   //     {"name":"Charmander", "image":"assets/imgs/charmander.png","type":"Fire-Type"},
-  //     {"name":"Pikachu", "image":"assets/imgs/pikachu.png","type":"Electric-Type"}      
+  //     {"name":"Pikachu", "image":"assets/imgs/pikachu.png","type":"Electric-Type"}
   //   ];
   // }
 
@@ -46,7 +55,7 @@ export class CardsPage {
   //    var cardArray = [];
   //    for (var i = 0; i < 5; i++){
   //      cardArray.push (this.getPokemonInfo(rand));
-  //    }    
+  //    }
   // }
 
   // getPokemonObj(int){

@@ -10,21 +10,18 @@
   <ion-navbar>
     <ion-title>Cards</ion-title>
   </ion-navbar>
-<ion-content padding>
-  <ion-item>
-    <ion-label color="primary" stacked>Search for Pokemon</ion-label>
-    <ion-input type="text" (input)="SearchForMovie($event, searchkey)"></ion-input>
-  </ion-item>
-</ion-content>
 </ion-header>
 
-
 <ion-content class="card-background-page">
+    <ion-item>
+        <ion-label color="primary" stacked>Search for Pokemon</ion-label>
+        <ion-input type="text" (input)="SearchForMovie($event, searchkey)"></ion-input>
+    </ion-item>
 
-    <ion-card *ngFor="let result of results">        
-        <img src="{{result.image}}">
-        <div class="card-title">{{result.name}}</div>  
-        <div class="card-subtitle">{{result.type}}</div>    
+    <ion-card>
+        <img src="{{ image }}">
+        <div class="card-title">{{ name }}</div>
+        <div class="card-subtitle">{{ type }}</div>
     </ion-card>
 
 </ion-content>
